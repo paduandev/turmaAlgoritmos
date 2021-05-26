@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define NUMERO_VOTOS 5
+#define NUMERO_VOTOS 10
 
 int main()
 {
@@ -9,10 +9,30 @@ int main()
 
     for (contador = 1; contador <= NUMERO_VOTOS; contador++)
     {
+        printf("1 a 4 - candidatos \n");
+        printf("5-branco 6-nulo \n");
         printf("Digite o seu voto: ");
         scanf("%d", &voto);
 
-        if (voto == 1)
+        switch (voto)
+        {
+            case 1: 
+                printf("Voto para o candidato 1 computado.");
+                ca1++;
+                break;
+            case 2: ca2++;
+                break;
+            case 3: ca3++;
+                break;
+            case 4: ca4++;
+                break;
+            case 5: brancos++;
+                break;
+            default: nulos++;
+                break;
+        }
+
+      /*   if (voto == 1) 
         {
             ca1++;
         }
@@ -47,16 +67,21 @@ int main()
                     }
                 }
             }
-        }
+        } */
+
     }
 
     // contagem
     votos_validos = ca1 + ca2 + ca3 + ca4 + brancos;
-    printf("Candidato 1: %d : %.1f\n" ,ca1, (float)ca1 / votos_validos);
-
     
-
     // saídas
+    printf("Candidato 1: %d : %.1f %%\n" ,ca1, (float)ca1 / votos_validos * 100) ;
+    printf("Candidato 2: %d : %.1f %%\n" ,ca2, (float)ca2 / votos_validos * 100) ;
+    printf("Candidato 3: %d : %.1f %%\n" ,ca3, (float)ca3 / votos_validos * 100) ;
+    printf("Candidato 4: %d : %.1f %%\n" ,ca4, (float)ca4 / votos_validos * 100) ;
+    printf("Total de brancos: %d\n", brancos);
+    printf("Total de nulos: %d\n", nulos);
+    printf("Brancos e Nulos %.1f %%\n", (float)(brancos + nulos) / NUMERO_VOTOS * 100);
 
     return 0;
 }
